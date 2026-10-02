@@ -5,11 +5,11 @@ import {
   BookOpen, 
   Layers, 
   Download, 
-  Cpu,
-  Github,
-  Volume2,
-  VolumeX,
-  Compass
+  Cpu, 
+  Github, 
+  Volume2, 
+  VolumeX, 
+  Brain
 } from 'lucide-react';
 import { haptics } from '../utils/audioHaptics';
 
@@ -18,6 +18,7 @@ interface HeaderProps {
   setActiveTab: (tab: 'studio' | 'templates') => void;
   onOpenMcpModal: () => void;
   onOpenApiModal: () => void;
+  onOpenTypeSafeModal: () => void;
   onDownloadScript: () => void;
   scriptLanguage: string;
   isSoundEnabled: boolean;
@@ -29,6 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
   setActiveTab,
   onOpenMcpModal,
   onOpenApiModal,
+  onOpenTypeSafeModal,
   onDownloadScript,
   scriptLanguage,
   isSoundEnabled,
@@ -122,6 +124,16 @@ export const Header: React.FC<HeaderProps> = ({
             title={isSoundEnabled ? 'Audio Feedback Enabled' : 'Audio Muted'}
           >
             {isSoundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+          </button>
+
+          {/* TypeSafe Compaction Trigger */}
+          <button
+            onClick={() => { haptics.tap(); onOpenTypeSafeModal(); }}
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-indigo-200 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 transition-all apple-press shadow-sm"
+            title="TypeSafe Choice Primitive & Compaction"
+          >
+            <Brain className="w-3.5 h-3.5 text-indigo-400" />
+            <span>TypeSafe AI</span>
           </button>
 
           {/* MCP Bridge Trigger */}

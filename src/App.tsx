@@ -7,6 +7,7 @@ import { ARSimulator } from './components/ARSimulator';
 import { TemplateGallery } from './components/TemplateGallery';
 import { McpBridgeModal } from './components/McpBridgeModal';
 import { ApiReferenceModal } from './components/ApiReferenceModal';
+import { TypeSafeCompactionModal } from './components/TypeSafeCompactionModal';
 import { LENS_TEMPLATES } from './data/templates';
 import { lintLensScript, parseScriptInputs } from './utils/linter';
 import { generateLensScript } from './utils/scriptGenerator';
@@ -45,6 +46,7 @@ export function App() {
   // Modals
   const [isMcpModalOpen, setIsMcpModalOpen] = useState(false);
   const [isApiModalOpen, setIsApiModalOpen] = useState(false);
+  const [isTypeSafeModalOpen, setIsTypeSafeModalOpen] = useState(false);
 
   // Parse diagnostics and inputs whenever code changes
   useEffect(() => {
@@ -164,6 +166,7 @@ export function App() {
         setActiveTab={setActiveTab}
         onOpenMcpModal={() => setIsMcpModalOpen(true)}
         onOpenApiModal={() => setIsApiModalOpen(true)}
+        onOpenTypeSafeModal={() => setIsTypeSafeModalOpen(true)}
         onDownloadScript={handleDownloadScript}
         scriptLanguage={selectedLanguage}
         isSoundEnabled={isSoundEnabled}
@@ -238,6 +241,11 @@ export function App() {
         onClose={() => setIsApiModalOpen(false)}
       />
 
+      <TypeSafeCompactionModal
+        isOpen={isTypeSafeModalOpen}
+        onClose={() => setIsTypeSafeModalOpen(false)}
+      />
+
       {/* Apple Designed Footer */}
       <footer className="border-t border-white/[0.08] apple-glass-subtle py-4 px-6 text-center text-xs text-slate-400 relative z-10">
         <div className="max-w-[1720px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -253,6 +261,13 @@ export function App() {
             >
               GitHub Repository
             </a>
+            <span className="text-slate-600">•</span>
+            <button
+              onClick={() => { haptics.tap(); setIsTypeSafeModalOpen(true); }}
+              className="hover:text-indigo-300 transition-colors apple-press text-indigo-400 font-semibold"
+            >
+              TypeSafe Compaction
+            </button>
             <span className="text-slate-600">•</span>
             <button
               onClick={() => { haptics.tap(); setIsMcpModalOpen(true); }}

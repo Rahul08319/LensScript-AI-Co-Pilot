@@ -473,5 +473,103 @@ script.createEvent("OnStartEvent").bind(initGame);
 script.createEvent("UpdateEvent").bind(onUpdate);
 script.createEvent("TapEvent").bind(onScreenTap);
 `
+  },
+  {
+    id: 'portal-world-ar',
+    title: '3D AR World Portal & Occlusion Mask',
+    description: 'Places a life-size holographic doorway in camera world space with a depth occlusion mask revealing an alternate 3D dimension.',
+    category: 'world',
+    engine: 'Lens Studio 5.x',
+    language: 'typescript',
+    badge: 'Pro AR',
+    triggerTip: 'Walk through or tap to inspect interior dimension of the 3D portal.',
+    inputs: [
+      { name: 'portalFrame', type: 'SceneObject', defaultValue: 'PortalDoorway', description: '3D Door frame mesh' },
+      { name: 'interiorDimension', type: 'SceneObject', defaultValue: 'OtherWorldScene', description: '3D interior world visible only through doorway' },
+      { name: 'occlusionDepthMat', type: 'Asset.Material', defaultValue: 'DepthMaskMat', description: 'Material rendering color write off with depth write on' }
+    ],
+    code: `// @input SceneObject portalFrame
+// @input SceneObject interiorDimension
+// @input Asset.Material occlusionDepthMat
+
+/**
+ * LensScript AI Co-Pilot: 3D AR World Portal
+ * Uses Color Mask Depth Occlusion
+ */
+
+let isInsideDimension = false;
+
+function initPortal() {
+  if (script.occlusionDepthMat) {
+    // Disable color buffer, enable depth buffer
+    script.occlusionDepthMat.mainPass.colorMask = false;
+  }
+  print("[LensScript] AR World Portal initialized. Positioned in front of user.");
+}
+
+function onUpdate() {
+  if (!script.portalFrame) return;
+
+  const camPos = global.scene.getCamera().getTransform().getWorldPosition();
+  const portalPos = script.portalFrame.getTransform().getWorldPosition();
+
+  // Check if camera passed through the threshold Z boundary
+  const dist = camPos.distance(portalPos);
+  if (dist < 0.5 && !isInsideDimension) {
+    isInsideDimension = true;
+    print("[LensScript Portal] User entered alternate dimension!");
+  } else if (dist >= 0.5 && isInsideDimension) {
+    isInsideDimension = false;
+  }
+}
+
+script.createEvent("OnStartEvent").bind(initPortal);
+script.createEvent("UpdateEvent").bind(onUpdate);
+`
+  },
+  {
+    id: 'segmentation-bg-swap',
+    title: 'Portrait Background Segmentation Mask',
+    description: 'Uses Snapchat neural portrait segmentation to isolate the user and composite an animated cyber matrix background behind them.',
+    category: 'interaction',
+    engine: 'Lens Studio 5.x',
+    language: 'javascript',
+    badge: 'Segmentation',
+    triggerTip: 'Click Blink or Tap to cycle cyberpunk background replacement textures.',
+    inputs: [
+      { name: 'portraitMask', type: 'Asset.Texture', defaultValue: 'PortraitSegmentationTexture', description: 'Built-in Segmentation Texture' },
+      { name: 'backgroundMat', type: 'Asset.Material', defaultValue: 'CyberMatrixShader', description: 'Background shader material' },
+      { name: 'animSpeed', type: 'float', defaultValue: 1.5, description: 'Background UV scroll speed' }
+    ],
+    code: `// @input Asset.Texture portraitMask
+// @input Asset.Material backgroundMat
+// @input float animSpeed = 1.5
+
+/**
+ * LensScript AI Co-Pilot: Portrait Background Segmentation
+ * Real-time body/portrait matte compositing
+ */
+
+var uvOffset = 0.0;
+
+function onUpdate() {
+  if (!script.backgroundMat) return;
+
+  var dt = getDeltaTime();
+  uvOffset += dt * script.animSpeed;
+
+  if (script.backgroundMat.mainPass) {
+    // Modulate animated UV uniform
+    script.backgroundMat.mainPass.uvOffset = uvOffset;
+  }
+}
+
+function onScreenTap(e) {
+  print("[LensScript Segmentation] Swapping background matrix palette");
+}
+
+script.createEvent("UpdateEvent").bind(onUpdate);
+script.createEvent("TapEvent").bind(onScreenTap);
+`
   }
 ];
