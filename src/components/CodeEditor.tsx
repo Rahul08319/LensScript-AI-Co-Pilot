@@ -9,10 +9,10 @@ import {
   AlertCircle, 
   CheckCircle2,
   Terminal,
-  Maximize2,
-  Minimize2
+  Code2
 } from 'lucide-react';
 import { DiagnosticItem, ScriptLanguage } from '../types/lens';
+import { haptics } from '../utils/audioHaptics';
 
 interface CodeEditorProps {
   code: string;
@@ -33,6 +33,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   const [showDiagnostics, setShowDiagnostics] = useState(true);
 
   const handleCopy = () => {
+    haptics.pop();
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -43,19 +44,19 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   const warningCount = diagnostics.filter(d => d.type === 'warning').length;
 
   return (
-    <div className="flex flex-col h-full bg-[#0E121E] rounded-2xl border border-white/[0.08] overflow-hidden shadow-2xl">
+    <div className="flex flex-col h-full apple-glass squircle-lg overflow-hidden shadow-2xl">
       
       {/* Editor Header Bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#131828] border-b border-white/[0.08] select-none">
+      <div className="flex items-center justify-between px-5 py-3.5 bg-[#12162A]/60 border-b border-white/[0.08] select-none">
         
         {/* File info & badge */}
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#1B2136] border border-white/[0.06] text-xs font-mono text-slate-200">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.06] border border-white/[0.08] text-xs font-mono text-slate-200">
             <FileCode className="w-3.5 h-3.5 text-snap-yellow" />
             <span>LensScript.{language === 'typescript' ? 'ts' : 'js'}</span>
           </div>
           
-          <span className="hidden sm:inline-block text-[11px] text-slate-400 font-medium">
+          <span className="hidden sm:inline-block text-[11px] text-slate-400 font-medium tracking-tight">
             {lines.length} lines • {(new Blob([code]).size / 1024).toFixed(1)} KB
           </span>
         </div>
@@ -64,8 +65,8 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
         <div className="flex items-center gap-2">
           {/* Linter / Diagnostics indicator badge */}
           <button
-            onClick={() => setShowDiagnostics(!showDiagnostics)}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+            onClick={() => { haptics.tap(); setShowDiagnostics(!showDiagnostics); }}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all apple-press ${
               errorCount > 0
                 ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
                 : warningCount > 0
@@ -87,13 +88,13 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
           {/* Copy Button */}
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#1D243D] hover:bg-[#252E4D] text-slate-200 text-xs font-semibold border border-white/[0.08] transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-slate-200 text-xs font-semibold border border-white/[0.08] transition-all apple-press"
             title="Copy script to clipboard"
           >
             {copied ? (
               <>
                 <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-emerald-400">Copied!</span>
+                <span className="text-emerald-400 font-bold">Copied!</span>
               </>
             ) : (
               <>
@@ -105,8 +106,8 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
 
           {/* Download Button */}
           <button
-            onClick={onDownload}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#1D243D] hover:bg-snap-yellow hover:text-black text-slate-200 text-xs font-semibold border border-white/[0.08] transition-all"
+            onClick={() => { haptics.snap(); onDownload(); }}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.06] hover:bg-snap-yellow hover:text-black text-slate-200 text-xs font-semibold border border-white/[0.08] transition-all apple-press"
             title="Save script file"
           >
             <Download className="w-3.5 h-3.5" />
@@ -116,9 +117,9 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
       </div>
 
       {/* Editor Main Code Area */}
-      <div className="relative flex-1 flex overflow-hidden font-mono text-xs sm:text-[13px] leading-relaxed">
+      <div className="relative flex-1 flex overflow-hidden font-mono text-xs sm:text-[13px] leading-relaxed bg-[#0A0D18]/80">
         {/* Line Numbers */}
-        <div className="w-12 py-4 select-none bg-[#0B0E19] text-slate-400 text-right pr-3 shrink-0 border-r border-white/[0.05] font-mono">
+        <div className="w-12 py-4 select-none bg-[#070912]/80 text-slate-400 text-right pr-3 shrink-0 border-r border-white/[0.05] font-mono">
           {lines.map((_, i) => (
             <div key={i} className="h-6">
               {i + 1}
@@ -132,7 +133,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
             value={code}
             onChange={(e) => setCode(e.target.value)}
             spellCheck={false}
-            className="w-full h-full p-4 bg-transparent text-slate-200 focus:outline-none resize-none font-mono selection:bg-snap-yellow/30 selection:text-white"
+            className="w-full h-full p-4 bg-transparent text-slate-100 focus:outline-none resize-none font-mono selection:bg-snap-yellow/35 selection:text-black"
             style={{ lineHeight: '1.5rem', tabSize: 2 }}
           />
         </div>
@@ -140,25 +141,25 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
 
       {/* Diagnostics Drawer (Bottom) */}
       {showDiagnostics && diagnostics.length > 0 && (
-        <div className="border-t border-white/[0.08] bg-[#0B0E18] p-3 max-h-48 overflow-y-auto">
+        <div className="border-t border-white/[0.08] bg-[#0A0D18] p-3.5 max-h-48 overflow-y-auto">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <Terminal className="w-3.5 h-3.5 text-snap-yellow" />
               Lens Studio Compatibility & Engine Diagnostics ({diagnostics.length})
             </span>
             <button
-              onClick={() => setShowDiagnostics(false)}
-              className="text-[11px] text-slate-400 hover:text-white"
+              onClick={() => { haptics.tap(); setShowDiagnostics(false); }}
+              className="text-[11px] text-slate-400 hover:text-white apple-press"
             >
               Dismiss
             </button>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {diagnostics.map((diag) => (
               <div
                 key={diag.id}
-                className={`p-2 rounded-lg text-xs flex items-start gap-2.5 ${
+                className={`p-2.5 rounded-xl text-xs flex items-start gap-2.5 ${
                   diag.type === 'error'
                     ? 'bg-rose-950/40 border border-rose-800/40 text-rose-200'
                     : diag.type === 'warning'

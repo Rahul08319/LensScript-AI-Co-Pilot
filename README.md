@@ -3,34 +3,36 @@
 # ⚡ LensScript AI Co-Pilot
 
 <p align="center">
-  <strong>Next-Generation AI Developer Studio & Interactive AR Script Co-Pilot for Snapchat Lens Studio</strong>
+  <strong>Next-Generation AI Developer Studio & Interactive AR Script Co-Pilot for Snapchat Lens Studio</strong><br />
+  <em>Engineered with Apple Human Interface Guidelines (HIG) • Liquid Glass Materials • Fluid Spring Physics</em>
 </p>
 
 <p align="center">
+  <a href="https://developer.apple.com/design/human-interface-guidelines/"><img src="https://img.shields.io/badge/Design-Apple%20HIG%20%26%20Fluid%20Motion-000000?style=for-the-badge&logo=apple&logoColor=white" alt="Apple Design HIG" /></a>
   <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" /></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5" /></a>
   <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-6.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite 6" /></a>
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://developers.snap.com/lens-studio"><img src="https://img.shields.io/badge/Snapchat-Lens%20Studio%205.x-FFFC00?style=for-the-badge&logo=snapchat&logoColor=black" alt="Lens Studio 5" /></a>
-  <a href="https://modelcontextprotocol.io/"><img src="https://img.shields.io/badge/MCP-Bridge%20Enabled-00F0FF?style=for-the-badge&logo=ant-design&logoColor=black" alt="MCP Bridge" /></a>
+  <a href="https://modelcontextprotocol.io/"><img src="https://img.shields.io/badge/MCP-Bridge%20Port%2050049-00F0FF?style=for-the-badge&logo=ant-design&logoColor=black" alt="MCP Bridge" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge" alt="MIT License" /></a>
-  <a href="https://github.com/Rahul08319/LensScript-AI-Co-Pilot/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-10B981.svg?style=for-the-badge" alt="PRs Welcome" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" style="border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(255, 252, 0, 0.25);" />
+  <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" style="border-radius: 28px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 25px 50px -12px rgba(255, 252, 0, 0.25);" />
 </p>
 
 <p align="center">
   <a href="#-about-the-project"><b>📖 About</b></a> •
-  <a href="#-features-showcase"><b>✨ Features</b></a> •
-  <a href="#-interactive-ar-viewfinder"><b>📱 AR Simulator</b></a> •
+  <a href="#-apple-design-foundations"><b>🍏 Apple Design System</b></a> •
+  <a href="#-features-bento-grid"><b>✨ Features</b></a> •
+  <a href="#-interactive-916-ar-viewfinder"><b>📱 AR Simulator</b></a> •
   <a href="#-lens-studio-mcp-bridge"><b>🔌 MCP Bridge</b></a> •
-  <a href="#-code-gallery"><b>💻 Code Examples</b></a> •
-  <a href="#-getting-started"><b>🚀 Quick Start</b></a> •
-  <a href="#-architecture"><b>⚡ Architecture</b></a>
+  <a href="#-code-examples"><b>💻 Code Examples</b></a> •
+  <a href="#-architecture--pipeline"><b>⚡ Architecture</b></a> •
+  <a href="#-getting-started"><b>🚀 Quick Start</b></a>
 </p>
 
 </div>
@@ -39,51 +41,74 @@
 
 ## 📖 About The Project
 
-> *"The fastest path from prompt to augmented reality production."*
+> *"When we align the interface to the way we think and move, something magical happens — it stops feeling like a computer and starts feeling like a seamless extension of us."*
 
-**LensScript AI Co-Pilot** is a **luxury-tier AR developer studio** engineered specifically for **Snapchat Lens Studio** creators, developers, and technical artists. Built with **React 18**, **TypeScript**, **Vite**, and **Tailwind CSS**, it bridges the gap between natural language ideas and production-grade AR scripting.
+**LensScript AI Co-Pilot** is an Apple-grade AR developer studio and AI Co-Pilot designed specifically for **Snapchat Lens Studio** creators, technical artists, and developers. Built from the ground up with **React 18**, **TypeScript**, **Vite**, and **Tailwind CSS**, it translates Apple's WWDC fluid interface principles into the web platform.
 
-Whether you are authoring face filters with elastic tween scales, building mouth-triggered particle cannons, creating audio-reactive spectrum visualizers, or implementing world-space raycast placement, **LensScript** automatically generates, validates, and simulates authentic Lens Studio **JavaScript** and **TypeScript** code in real time.
+Whether you are authoring facial blendshape filters with spring tweening, building mouth-triggered particle bursts, configuring live audio-spectrum reactive meshes, or implementing world-space raycasting, **LensScript** automatically generates, validates, and simulates production-ready Lens Studio **JavaScript** and **TypeScript** code with zero latency.
 
 ---
 
-## ✨ Features Showcase
+## 🍏 Apple Design Foundations
+
+LensScript AI Co-Pilot is crafted using Apple's 2025/2026 design language:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   APPLE DESIGN SYSTEM ARCHITECTURE                     │
+├───────────────────────┬───────────────────────┬────────────────────────┤
+│   LIQUID GLASS (HIG)  │  FLUID MOTION/SPRINGS │  WEB AUDIO HAPTICS     │
+│   • 28px blur backdrop│  • Damping ratio 1.0  │  • Taptic 120Hz click  │
+│   • Specular top edge │  • Response 0.35s     │  • Resonant picker pop │
+│   • Continuous curves │  • 1:1 direct tracking│  • Camera shutter snap │
+│   • Vibrancy labels   │  • Elastic overshoots │  • Dual-tone chimes    │
+└───────────────────────┴───────────────────────┴────────────────────────┘
+```
+
+1. **Liquid Glass & Depth**: Translucent surfaces (`backdrop-filter: blur(28px) saturate(190%)`) with specular top-edge highlights (`border-top: 1px solid rgba(255, 255, 255, 0.22)`) that simulate physical light bouncing off glass edges.
+2. **Fluid Physics & Spring Motion**: Critically damped springs (`damping: 1.0`, `response: 0.35s`) for UI transitions, with under-damped elastic bounce (`damping: ~0.8`) when momentum is carried.
+3. **Continuous Squircle Curves**: G2 continuous-curvature border curves (`squircle-lg`, `squircle-md`) eliminating sharp tangent transitions.
+4. **Multimodal Audio-Haptic Feedback**: Built-in zero-dependency Web Audio API synthesizer generating authentic Apple Taptic Engine feedback (`tap`, `pop`, `snap`, `success`, `coin chime`).
+
+---
+
+## ✨ Features Bento Grid
 
 <table>
   <tr>
     <td width="50%" valign="top">
       <h3>⚡ AI-Powered AR Script Co-Pilot</h3>
-      <p>Transform natural language prompts into battle-tested, typed scripts formatted specifically for Lens Studio v5.x / v4.x runtime engines.</p>
+      <p>Convert natural language prompts into clean, typed scripts formatted specifically for Lens Studio v5.x / v4.x runtime engines.</p>
     </td>
     <td width="50%" valign="top">
-      <h3>📱 Live 9:16 AR Viewfinder Simulator</h3>
-      <p>Interactive mobile viewport simulating Snapchat camera with real-time face tracking landmarks, mouth blendshapes, eye blinks, and particle bursts.</p>
+      <h3>📱 9:16 AR Viewfinder Simulator</h3>
+      <p>Interactive mobile viewport with 1:1 pointer tracking for face mesh landmarks, mouth blendshapes, eye blinks, and particle bursts.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3>🎛️ Dynamic <code>@input</code> Inspector</h3>
-      <p>Automatically parses <code>// @input</code> variable declarations in real time and renders interactive GUI sliders, checkboxes, and color pickers.</p>
+      <p>Parses <code>// @input</code> variable annotations from scripts on the fly and renders interactive sliders, toggles, and text inputs.</p>
     </td>
     <td width="50%" valign="top">
-      <h3>🩺 Lens Studio AST Linter & Diagnostics</h3>
-      <p>Detects non-sandbox DOM APIs (<code>window</code>, <code>document</code>), deprecated methods (<code>global.touchSystem</code>), and mobile GC memory allocations inside update loops.</p>
+      <h3>🩺 AST Diagnostics & Linter Engine</h3>
+      <p>Detects non-sandbox DOM calls (<code>window</code>, <code>document</code>), deprecated methods (<code>global.touchSystem</code>), and memory allocations inside update loops.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3>🔌 Lens Studio MCP Server Bridge</h3>
-      <p>Native Model Context Protocol (MCP) bridge configured for <code>http://localhost:50049/mcp</code>, allowing AI coding assistants to manipulate SceneObjects directly.</p>
+      <p>Native Model Context Protocol (MCP) bridge configured for <code>http://localhost:50049/mcp</code> to manipulate SceneObjects directly.</p>
     </td>
     <td width="50%" valign="top">
       <h3>🎭 8+ Battle-Tested AR Templates</h3>
-      <p>One-click load templates for 3D Face Prop cycling, Mouth Particle Cannon, Audio Spectrum Visualizer, Double-Blink LUT switch, and Hand Tracking.</p>
+      <p>One-click load templates for 3D Face Prop cycling, Mouth Particle Cannon, Audio Spectrum Visualizer, Double-Blink LUT, and Hand Tracking.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3>📚 Searchable Lens API Cheatsheet</h3>
-      <p>Instant categorized reference covering Lifecycle Events, Vector & Quaternion Math (<code>vec3</code>, <code>quat</code>), SceneObject transforms, and VFX controls.</p>
+      <p>Categorized reference covering Lifecycle Events, Vector & Quaternion Math (<code>vec3</code>, <code>quat</code>), SceneObject transforms, and VFX controls.</p>
     </td>
     <td width="50%" valign="top">
       <h3>💾 Multi-Format Export Engine</h3>
@@ -94,44 +119,48 @@ Whether you are authoring face filters with elastic tween scales, building mouth
 
 ---
 
-## 📱 Interactive AR Viewfinder
+## 📱 Interactive 9:16 AR Viewfinder
 
 The built-in simulator provides an authentic Snapchat mobile camera experience with real-time interactive triggers:
 
 ```
-+-------------------------------------------------------+
-|                SNAPCHAT AR VIEWFINDER                 |
-+-------------------------------------------------------+
-|  [Score: 120]                       [Lens Preview]   |
-|                                                       |
-|                     ( 3D Hat Prop )                   |
-|                        .-----.                        |
-|                       / [o] [o] \   <-- Blink Eye     |
-|                      |     |     |                    |
-|                       \   ===   /   <-- Open Mouth    |
-|                        '-------'                      |
-|                                                       |
-|                 ( 🖐️ Hand Landmark Orb )              |
-|                                                       |
-|             [ 👆 Tap Screen to Cycle Props ]          |
-|                                                       |
-|                       ( ( O ) )                       |
-+-------------------------------------------------------+
-| Triggers: [👁️ Blink]  [🎵 Beat Pulse]  [🖐️ Hand]     |
-| Mouth Aperture: [=======>-------------] 55%          |
-| Console Feed: [LensScript] Swapped to Prop Index: 2   |
-+-------------------------------------------------------+
++───────────────────────────────────────────────────────+
+│                SNAPCHAT AR VIEWFINDER                 │
++───────────────────────────────────────────────────────+
+│  [Score: 120]                       [Lens Preview]    │
+│                                                       │
+│                     ( 3D Prop )                       │
+│                        .-----.                        │
+│                       / [o] [o] \   <-- Blink Eyes    │
+│                      |     |     |                    │
+│                       \   ===   /   <-- Open Mouth    │
+│                        '-------'                      │
+│                                                       │
+│                 ( 🖐️ Hand Landmark Orb )              │
+│                                                       │
+│             [ 1:1 Direct Manipulation Drag ]          │
+│                                                       │
+│          (🕶️)     (🎩)     (👑)     (🎭)              │
+│           [ Lens Carousel Selection ]                 │
+│                                                       │
+│                       ( ( O ) )                       │
+│                [ Camera Shutter Click ]               │
++───────────────────────────────────────────────────────+
+│ Triggers: [👁️ Blink]  [🎵 Beat Pulse]  [🖐️ Hand]      │
+│ Mouth Aperture: [=======>-------------] 55%           │
+│ Console Feed: [LensScript] Swapped to Prop Index: 2   │
++───────────────────────────────────────────────────────+
 ```
 
 ---
 
 ## 🔌 Lens Studio MCP Bridge
 
-LensScript AI Co-Pilot integrates with the **Lens Studio Model Context Protocol (MCP)** server running locally on port `50049`.
+LensScript AI Co-Pilot connects directly with the **Lens Studio Model Context Protocol (MCP)** server running locally on port `50049`.
 
 ### Configuration (`mcp_config.json`)
 
-Add the following block to your agent configuration (Antigravity, Claude Desktop, or Cursor):
+Add this configuration to your AI coding environment (Antigravity, Claude Desktop, or Cursor):
 
 ```json
 {
@@ -147,9 +176,9 @@ Add the following block to your agent configuration (Antigravity, Claude Desktop
 }
 ```
 
-### Supported MCP Automation Tools
+### Supported Automation Tools
 
-| Tool Name | Description |
+| Tool Name | Capability |
 | :--- | :--- |
 | `inspect_scene_graph` | Queries full JSON tree of active SceneObjects, components, and materials. |
 | `create_scene_object` | Spawns new 3D meshes, Face Attachments, Head Trackers, or Cameras. |
@@ -183,6 +212,28 @@ function onScreenTap(eventData: TapEvent) {
   print("[LensScript] Swapped to Prop Index: " + currentIndex);
 }
 
+function animatePropPop(targetObj: SceneObject) {
+  const transform = targetObj.getTransform();
+  const initialScale = transform.getLocalScale();
+  const startTime = getTime();
+  const updateEvent = script.createEvent("UpdateEvent");
+  
+  updateEvent.bind(function() {
+    const elapsed = getTime() - startTime;
+    const progress = Math.min(1.0, elapsed / script.popDuration);
+    // Elastic overshoot spring formula
+    const s = 1.70158;
+    const t = progress - 1.0;
+    const ease = t * t * ((s + 1) * t + s) + 1.0;
+    transform.setLocalScale(initialScale.uniformScale(0.2 + 0.8 * ease));
+
+    if (progress >= 1.0) {
+      transform.setLocalScale(initialScale);
+      script.removeEvent(updateEvent);
+    }
+  });
+}
+
 script.createEvent("TapEvent").bind(onScreenTap);
 ```
 
@@ -211,13 +262,31 @@ script.createEvent("UpdateEvent").bind(onUpdate);
 
 ---
 
+## ⚡ Architecture & Pipeline
+
+```mermaid
+flowchart LR
+    A["👤 Creator Prompt"] --> B["⚡ LensScript AI Engine"]
+    B --> C["📝 Script Tokenizer & AST"]
+    C --> D["🩺 Engine Diagnostics / Linter"]
+    C --> E["🎛️ @input Parameter Inspector"]
+    C --> F["📱 9:16 AR Viewfinder Simulator"]
+    F --> G["👆 Real-Time Triggers (Tap, Mouth, Blink, Hand)"]
+    G --> H["🔊 Web Audio Haptics (Tock, Pop, Snap, Chime)"]
+    G --> I["📜 Live Console Logger"]
+    C --> J["🔌 Lens Studio MCP Bridge (Port 50049)"]
+    J --> K["🚀 Snapchat Lens Studio 5.x"]
+```
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - **Node.js**: v18.0.0 or higher
 - **npm**: v9.0.0 or higher
-- **Snapchat Lens Studio**: v5.0+ recommended (or v4.x)
+- **Snapchat Lens Studio**: v5.0+ recommended
 
 ### Installation
 
@@ -242,24 +311,7 @@ script.createEvent("UpdateEvent").bind(onUpdate);
    ```bash
    npm run build
    ```
-   The production-ready assets will be compiled into the `dist/` directory.
-
----
-
-## ⚡ Architecture & Pipeline
-
-```mermaid
-flowchart LR
-    A["👤 Creator Prompt"] --> B["⚡ LensScript AI Engine"]
-    B --> C["📝 Script Tokenizer & AST"]
-    C --> D["🩺 Engine Diagnostics / Linter"]
-    C --> E["🎛️ @input Parameter Inspector"]
-    C --> F["📱 9:16 AR Viewfinder Simulator"]
-    F --> G["👆 Real-Time Triggers (Tap, Mouth, Blink, Hand)"]
-    G --> H["📜 Live Console Logger"]
-    C --> I["🔌 Lens Studio MCP Bridge"]
-    I --> J["🚀 Snapchat Lens Studio 5.x"]
-```
+   Compiles optimized production assets into `dist/`.
 
 ---
 

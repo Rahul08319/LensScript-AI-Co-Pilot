@@ -1,6 +1,7 @@
 import React from 'react';
-import { Sliders, CheckSquare, Layers, Box, Info } from 'lucide-react';
+import { Sliders, Layers, Info } from 'lucide-react';
 import { ScriptInputParam } from '../types/lens';
+import { haptics } from '../utils/audioHaptics';
 
 interface ParameterInspectorProps {
   inputs: ScriptInputParam[];
@@ -12,22 +13,22 @@ export const ParameterInspector: React.FC<ParameterInspectorProps> = ({
   onInputChange
 }) => {
   return (
-    <div className="bg-[#0E121E] rounded-2xl border border-white/[0.08] overflow-hidden shadow-xl flex flex-col">
+    <div className="apple-glass squircle-lg overflow-hidden shadow-xl flex flex-col">
       {/* Header */}
-      <div className="px-4 py-3 bg-[#131828] border-b border-white/[0.08] flex items-center justify-between">
+      <div className="px-5 py-3.5 bg-[#12162A]/60 border-b border-white/[0.08] flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sliders className="w-4 h-4 text-snap-yellow" />
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-200">
             Inspector Properties (<span className="text-snap-yellow font-mono">@input</span>)
           </h3>
         </div>
-        <span className="text-[10px] text-slate-400 font-mono">
+        <span className="text-[10px] text-slate-400 font-mono px-2 py-0.5 rounded-full bg-white/[0.06]">
           {inputs.length} Defined
         </span>
       </div>
 
       {/* Input List */}
-      <div className="p-3.5 space-y-3 overflow-y-auto max-h-[300px]">
+      <div className="p-4 space-y-3 overflow-y-auto max-h-[300px]">
         {inputs.length === 0 ? (
           <div className="text-center py-6 px-4">
             <Layers className="w-8 h-8 text-slate-600 mx-auto mb-2 opacity-50" />
@@ -42,35 +43,38 @@ export const ParameterInspector: React.FC<ParameterInspectorProps> = ({
             return (
               <div 
                 key={param.name}
-                className="p-2.5 rounded-xl bg-[#14192B] border border-white/[0.05] hover:border-white/[0.12] transition-all space-y-1.5"
+                className="p-3 rounded-2xl bg-white/[0.04] border border-white/[0.06] hover:border-white/[0.12] transition-all space-y-2"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-slate-200">
                     {param.name}
                   </span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#1F2742] text-slate-400 font-mono">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/[0.08] text-slate-300 font-mono">
                     {param.type}
                   </span>
                 </div>
 
                 {/* Input Controller */}
                 {isBool ? (
-                  <label className="flex items-center gap-2 cursor-pointer pt-1">
+                  <label className="flex items-center gap-2.5 cursor-pointer pt-1 select-none">
                     <input
                       type="checkbox"
                       checked={!!param.currentValue}
-                      onChange={(e) => onInputChange(param.name, e.target.checked)}
-                      className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-snap-yellow focus:ring-snap-yellow"
+                      onChange={(e) => {
+                        haptics.pop();
+                        onInputChange(param.name, e.target.checked);
+                      }}
+                      className="w-4 h-4 rounded-md border-slate-700 bg-slate-900 text-snap-yellow focus:ring-snap-yellow"
                     />
                     <span className="text-xs text-slate-300 font-medium">
                       {param.currentValue ? 'Enabled (True)' : 'Disabled (False)'}
                     </span>
                   </label>
                 ) : isFloat ? (
-                  <div className="space-y-1 pt-1">
+                  <div className="space-y-1.5 pt-1">
                     <div className="flex justify-between text-[11px] font-mono text-slate-400">
                       <span>Value</span>
-                      <span className="text-snap-yellow font-semibold">{param.currentValue ?? param.defaultValue}</span>
+                      <span className="text-snap-yellow font-bold">{param.currentValue ?? param.defaultValue}</span>
                     </div>
                     <input
                       type="range"
@@ -78,7 +82,9 @@ export const ParameterInspector: React.FC<ParameterInspectorProps> = ({
                       max={param.name.toLowerCase().includes('duration') ? '5' : '100'}
                       step={param.name.toLowerCase().includes('duration') ? '0.05' : '1'}
                       value={param.currentValue ?? param.defaultValue ?? 1}
-                      onChange={(e) => onInputChange(param.name, parseFloat(e.target.value))}
+                      onChange={(e) => {
+                        onInputChange(param.name, parseFloat(e.target.value));
+                      }}
                       className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-snap-yellow"
                     />
                   </div>
@@ -88,7 +94,7 @@ export const ParameterInspector: React.FC<ParameterInspectorProps> = ({
                     value={param.currentValue ?? param.defaultValue ?? ''}
                     onChange={(e) => onInputChange(param.name, e.target.value)}
                     placeholder="Reference in Lens Studio..."
-                    className="w-full px-2.5 py-1 text-xs rounded-lg bg-[#0E1322] border border-white/[0.08] text-slate-200 focus:outline-none focus:border-snap-yellow"
+                    className="w-full px-3 py-1.5 text-xs rounded-xl bg-[#090C16] border border-white/[0.08] text-slate-200 focus:outline-none focus:border-snap-yellow"
                   />
                 )}
 
@@ -103,7 +109,7 @@ export const ParameterInspector: React.FC<ParameterInspectorProps> = ({
         )}
       </div>
 
-      <div className="px-4 py-2.5 bg-[#121626] border-t border-white/[0.06] text-[11px] text-slate-400 flex items-center gap-1.5">
+      <div className="px-5 py-3 bg-[#101426]/60 border-t border-white/[0.06] text-[11px] text-slate-400 flex items-center gap-2">
         <Info className="w-3.5 h-3.5 text-snap-yellow shrink-0" />
         <span>Modifications in this panel reflect directly in the Inspector GUI inside Lens Studio.</span>
       </div>

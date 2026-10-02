@@ -10,6 +10,7 @@ import { ApiReferenceModal } from './components/ApiReferenceModal';
 import { LENS_TEMPLATES } from './data/templates';
 import { lintLensScript, parseScriptInputs } from './utils/linter';
 import { generateLensScript } from './utils/scriptGenerator';
+import { haptics } from './utils/audioHaptics';
 import { 
   ScriptLanguage, 
   EngineVersion, 
@@ -24,6 +25,7 @@ export function App() {
   const [activeTemplateId, setActiveTemplateId] = useState<string>('tap-to-swap-props');
   const [selectedLanguage, setSelectedLanguage] = useState<ScriptLanguage>('typescript');
   const [engineVersion, setEngineVersion] = useState<EngineVersion>('Lens Studio 5.x');
+  const [isSoundEnabled, setIsSoundEnabled] = useState(true);
   
   // Script Code state
   const [code, setCode] = useState<string>(LENS_TEMPLATES[0].code);
@@ -62,6 +64,8 @@ export function App() {
       const nextIndex = (attachedPropIndex + 1) % 4;
       setAttachedPropIndex(nextIndex);
       addLog(timeStr, 'print', `[LensScript] Screen Tapped! Swapped to Prop Index: ${nextIndex}`);
+    } else if (eventName === 'CameraSnapshot') {
+      addLog(timeStr, 'print', `[LensScript Camera] High-Resolution Snapshot Captured!`);
     } else if (eventName === 'MouthOpenedEvent') {
       addLog(timeStr, 'print', `[LensScript] Mouth Opened (${(data.ratio * 100).toFixed(0)}%)! Fired Coin Particle Burst`);
     } else if (eventName === 'MouthClosedEvent') {
@@ -105,6 +109,7 @@ export function App() {
       setEngineVersion(engine);
       setIsGenerating(false);
       setActiveTab('studio');
+      haptics.success();
       addLog(timeStr, 'print', `[LensScript AI] Script Synthesized Successfully! Ready to test.`);
     }, 700);
   };
@@ -147,8 +152,12 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#080A0F] text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#07080D] text-[#F5F5F7] relative selection:bg-snap-yellow selection:text-black">
       
+      {/* Apple Subtle Ambient Lighting Orbs */}
+      <div className="fixed top-[-15%] left-[20%] w-[600px] h-[600px] bg-snap-yellow/[0.035] rounded-full blur-[140px] pointer-events-none" />
+      <div className="fixed bottom-[-10%] right-[15%] w-[500px] h-[500px] bg-cyan-500/[0.035] rounded-full blur-[140px] pointer-events-none" />
+
       {/* Header */}
       <Header
         activeTab={activeTab}
@@ -157,10 +166,12 @@ export function App() {
         onOpenApiModal={() => setIsApiModalOpen(true)}
         onDownloadScript={handleDownloadScript}
         scriptLanguage={selectedLanguage}
+        isSoundEnabled={isSoundEnabled}
+        setIsSoundEnabled={setIsSoundEnabled}
       />
 
       {/* Main Container */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col relative z-10">
         {activeTab === 'studio' ? (
           <div className="flex-1 flex flex-col">
             {/* Prompt Bar */}
@@ -227,32 +238,32 @@ export function App() {
         onClose={() => setIsApiModalOpen(false)}
       />
 
-      {/* Footer */}
-      <footer className="border-t border-white/[0.08] bg-[#0A0D17] py-4 px-6 text-center text-xs text-slate-400">
+      {/* Apple Designed Footer */}
+      <footer className="border-t border-white/[0.08] apple-glass-subtle py-4 px-6 text-center text-xs text-slate-400 relative z-10">
         <div className="max-w-[1720px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>
-            LensScript AI Co-Pilot • Built for Snapchat AR Creators & Lens Studio 5.x / 4.x
+          <p className="tracking-tight font-medium">
+            LensScript AI Co-Pilot • Designed with Apple Human Interface Guidelines for Snapchat AR Creators
           </p>
           <div className="flex items-center gap-4 text-[11px]">
             <a
               href="https://github.com/Rahul08319/LensScript-AI-Co-Pilot"
               target="_blank"
               rel="noreferrer"
-              className="text-snap-yellow hover:underline"
+              className="text-snap-yellow hover:underline apple-press font-semibold"
             >
               GitHub Repository
             </a>
             <span className="text-slate-600">•</span>
             <button
-              onClick={() => setIsMcpModalOpen(true)}
-              className="hover:text-white transition-colors"
+              onClick={() => { haptics.tap(); setIsMcpModalOpen(true); }}
+              className="hover:text-white transition-colors apple-press"
             >
               MCP Bridge (localhost:50049)
             </button>
             <span className="text-slate-600">•</span>
             <button
-              onClick={() => setIsApiModalOpen(true)}
-              className="hover:text-white transition-colors"
+              onClick={() => { haptics.tap(); setIsApiModalOpen(true); }}
+              className="hover:text-white transition-colors apple-press"
             >
               Snapchat AR APIs
             </button>

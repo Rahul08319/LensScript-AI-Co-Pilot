@@ -5,77 +5,127 @@
 @layer base {
   :root {
     --snap-yellow: #FFFC00;
+    --apple-system-blue: #0071E3;
+    --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   body {
-    background-color: #080A0F;
-    color: #F1F5F9;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #07080D;
+    color: #F5F5F7;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Custom Scrollbars */
+/* Apple Fluid Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(14, 18, 27, 0.7);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.16);
   border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 252, 0, 0.4);
+  background: rgba(255, 252, 0, 0.45);
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(18, 23, 38, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+/* Apple 2025 Liquid Glass System */
+.apple-glass {
+  background: rgba(22, 27, 44, 0.65);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-top: 1px solid rgba(255, 255, 255, 0.22); /* Specular top light catch */
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
 }
 
-.glass-panel-subtle {
-  background: rgba(14, 18, 28, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.apple-glass-subtle {
+  background: rgba(14, 18, 30, 0.45);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.glass-panel-interactive {
-  background: rgba(18, 23, 38, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+.apple-glass-interactive {
+  background: rgba(22, 27, 44, 0.65);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel-interactive:hover {
-  border-color: rgba(255, 252, 0, 0.3);
-  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(255, 252, 0, 0.15);
-  transform: translateY(-1px);
+.apple-glass-interactive:hover {
+  border-color: rgba(255, 252, 0, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.55), 0 0 25px -4px rgba(255, 252, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Neon Glow utilities */
+.apple-glass-interactive:active {
+  transform: scale(0.985) translateY(0px);
+  transition-duration: 0.1s;
+}
+
+/* Apple Spring Press Helper */
+.apple-press {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+.apple-press:active {
+  transform: scale(0.97);
+  transition-duration: 0.08s;
+}
+
+/* Apple Squircle / Continuous Curves */
+.squircle-lg {
+  border-radius: 28px;
+}
+
+.squircle-md {
+  border-radius: 20px;
+}
+
+.squircle-sm {
+  border-radius: 14px;
+}
+
+/* Apple Neon & Glow Effects */
 .text-glow-yellow {
-  text-shadow: 0 0 12px rgba(255, 252, 0, 0.6);
+  text-shadow: 0 0 14px rgba(255, 252, 0, 0.65);
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  text-shadow: 0 0 14px rgba(0, 240, 255, 0.65);
 }
 
-/* Simulated Scanline / Camera grid */
+/* Camera Viewfinder Overlay */
 .ar-viewfinder {
   background-image: 
-    radial-gradient(circle at center, transparent 40%, rgba(8, 10, 15, 0.8) 100%),
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 20px 20px, 20px 20px;
+    radial-gradient(circle at center, transparent 35%, rgba(6, 8, 14, 0.85) 100%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+}
+
+/* Shimmer animation */
+@keyframes appleShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shimmer {
+  animation: appleShimmer 2.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
 }
